@@ -1,71 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rafael R. Del Grande</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f4f4f4;
+      font-family: 'Helvetica Neue', sans-serif;
+      background: #fcfbf7;
       color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
+      scroll-behavior: smooth;
     }
-    h1 {
+
+    header {
+      background: #fcfbf7;
+      padding: 1em 2em;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .title {
       font-size: 2.5em;
-      margin: 0.2em 0;
+      margin: 0;
     }
-    p {
-      max-width: 600px;
-      margin: 0.5em 0 1em;
+
+    .subtitle {
+      font-style: italic;
+      font-size: 1.2em;
+      margin-top: 0.25em;
+      color: #555;
     }
-    .buttons {
+
+    nav {
       margin-top: 1em;
     }
-    .buttons a {
-      display: inline-block;
-      margin: 0.5em;
-      padding: 0.75em 1.5em;
-      background: #007acc;
-      color: white;
+
+    nav a {
       text-decoration: none;
-      border-radius: 5px;
-      transition: background 0.3s;
+      color: #800000;
+      font-weight: bold;
+      margin-right: 1.5em;
+      padding-bottom: 4px;
     }
-    .buttons a:hover {
-      background: #005fa3;
+
+    nav a.active,
+    nav a:hover {
+      border-bottom: 4px solid #800000;
     }
+
+    section {
+      padding: 4em 2em;
+      max-width: 800px;
+      margin: auto;
+    }
+
     footer {
-      position: absolute;
-      bottom: 10px;
+      text-align: center;
+      padding: 2em;
       font-size: 0.8em;
-      color: #777;
+      color: #888;
     }
   </style>
 </head>
 <body>
 
-  <h1>Rafael R. Del Grande</h1>
-  <p>Condensed Matter Physicist | Computational Materials Scientist | Scientific Software Developer</p>
+  <header>
+    <h1 class="title">Rafael R. Del Grande</h1>
+    <p class="subtitle">Predicting excited-state phenomena in quantum & energy materials</p>
+    <nav>
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#research" class="nav-link">Research Projects</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+  </header>
 
-  <div class="buttons">
-    <a href="docs/CV_Rafael_Del_Grande_1page.pdf" target="_blank">Download CV</a>
-    <a href="docs/publication_list.pdf" target="_blank">Publication List</a>
-    <a href="mailto:rafaeldgrande@gmail.com">Contact Me</a>
-    <a href="https://github.com/rafaeldgrande" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/rafaeldelgrande/" target="_blank">LinkedIn</a>
-  </div>
+  <section id="home">
+    <h2>Home</h2>
+    <p>Welcome to my research page! I am a computational physicist specializing in excited-state phenomena, density functional theory (DFT), and many-body perturbation theory (GW-BSE).</p>
+  </section>
+
+  <section id="research">
+    <h2>Research Projects</h2>
+    <p>Key areas of research:</p>
+    <ul>
+      <li>Excited-state forces from GW-BSE + electron-phonon coupling</li>
+      <li>Ab initio studies of 2D materials and moiré systems</li>
+      <li>Machine learning for predicting quasiparticle and excitonic properties</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:rafaeldgrande@gmail.com">rafaeldgrande@gmail.com</a></p>
+    <p>
+      <a href="cv.pdf" target="_blank">Download CV (PDF)</a><br>
+      <a href="publications.pdf" target="_blank">Publication List (PDF)</a>
+    </p>
+  </section>
 
   <footer>
     &copy; 2025 Rafael R. Del Grande
   </footer>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 100) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
