@@ -63,19 +63,42 @@
       font-size: 0.8em;
       color: #888;
     }
+
+    .header-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5em;
+    }
+
+    .profile-pic {
+    width: 130px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .title-container {
+    flex: 1;
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1 class="title">Rafael R. Del Grande</h1>
-    <p class="subtitle">Postdoctoral Scholar at University of California, Merced</p>
-    <nav>
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="research.html" class="nav-link">Research Projects</a>
-      <a href="contact.html" class="nav-link">Contact</a>
-    </nav>
-  </header>
+<header>
+  <div class="header-container">
+    <img src="pictures/profile.png" alt="Profile photo" class="profile-pic" />
+    <div class="title-container">
+      <h1 class="title">Rafael R. Del Grande</h1>
+      <p class="subtitle">Postdoctoral Scholar at University of California, Merced</p>
+      <nav>
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="research.html" class="nav-link">Research Projects</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
 
     <section>
     <h2>Contact</h2>

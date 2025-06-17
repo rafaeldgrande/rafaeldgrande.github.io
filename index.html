@@ -62,19 +62,41 @@
       font-size: 0.8em;
       color: #888;
     }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      gap: 1.5em;
+    }
+
+    .profile-pic {
+      width: 130px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .title-container {
+      flex: 1;
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1 class="title">Rafael R. Del Grande</h1>
-    <p class="subtitle">Postdoctoral Scholar at University of California, Merced</p>
-    <nav>
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="research.html" class="nav-link">Research Projects</a>
-      <a href="contact.html" class="nav-link">Contact</a>
-    </nav>
-  </header>
+<header>
+  <div class="header-container">
+    <img src="pictures/profile.png" alt="Profile photo" class="profile-pic" />
+    <div class="title-container">
+      <h1 class="title">Rafael R. Del Grande</h1>
+      <p class="subtitle">Postdoctoral Scholar at University of California, Merced</p>
+      <nav>
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="research.html" class="nav-link">Research Projects</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
 
   <section>
     <h2>Short Bio:</h2>
@@ -105,13 +127,13 @@
     <a href="https://www.respondeai.com.br" target="_blank">Responde Aí</a>, a Brazilian educational platform startup. Roles: Reviewer (Dec 2017 - Jul 2018), Expert (Aug 2017 - Dec 2017) 
   </li> 
   <li>
-    Ph.D. in Physics, Federal University of Rio de Janeiro – June 2021. Advisors: Marcos G. Menezes and Rodrigo B. Capaz. 
-    <a href="https://github.com/marcosgm162/NAMOR/wiki" target="_blank">NAMOR group page</a> 
+    Ph.D. in Physics, Federal University of Rio de Janeiro – June 2021.
+    <a href="https://github.com/marcosgm162/NAMOR/wiki" target="_blank">NAMOR group</a> 
     <a href="docs/PhD_thesis.pdf" target="_blank">Phd Thesis</a>
   </li>
   <li>
-    M.Sc. in Physics, Federal University of Rio de Janeiro – February 2017. Advisors: Marcos G. Menezes and Rodrigo B. Capaz. 
-    <a href="https://github.com/marcosgm162/NAMOR/wiki" target="_blank">NAMOR group page</a> 
+    M.Sc. in Physics, Federal University of Rio de Janeiro – February 2017. 
+    <a href="https://github.com/marcosgm162/NAMOR/wiki" target="_blank">NAMOR group</a> 
     <a href="docs/Master_thesis.pdf" target="_blank">Master Thesis</a>
   </li>
   <li>
