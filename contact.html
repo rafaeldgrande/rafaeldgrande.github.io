@@ -52,9 +52,97 @@
     }
 
     section {
-      padding: 2em 2em;  /* Or even 1em 2em for tighter spacing */
-      max-width: 800px;
+      padding: 3em 2em;
+      max-width: 900px;
       margin: auto;
+    }
+
+    section h2 {
+      font-size: 2.2em;
+      margin-bottom: 2em;
+      color: #1a1a1a;
+      font-weight: 600;
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2em;
+      margin-bottom: 3em;
+    }
+
+    .contact-card {
+      background: white;
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      border: 1px solid #f0f0f0;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+      border-color: #800000;
+    }
+
+    .contact-card h3 {
+      font-size: 1.1em;
+      color: #800000;
+      margin-top: 0;
+      margin-bottom: 0.8em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.85em;
+    }
+
+    .contact-card p {
+      margin: 0.5em 0;
+      line-height: 1.6;
+    }
+
+    .contact-card a {
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .contact-card a:hover {
+      color: #800000;
+      text-decoration: underline;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.2em;
+      margin-top: 1.2em;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      padding: 0.6em 1.2em;
+      background: #f5f5f5;
+      border-radius: 8px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      font-size: 0.95em;
+    }
+
+    .social-links a:hover {
+      background: #800000;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .social-links i {
+      font-size: 1.2em;
     }
 
     footer {
@@ -102,25 +190,37 @@
 
 
     <section>
-    <h2>Contact</h2>
+      <h2>Get in Touch</h2>
 
-    <p>Email: <a href="mailto:rafaeldgrande@gmail.com">rafaeldgrande@gmail.com</a></p>
-    <p>Second Email: <a href="mailto:rdelgrande@ucmerced.edu">rdelgrande@ucmerced.edu</a></p>
+      <div class="contact-container">
+        <div class="contact-card">
+          <h3><i class="fas fa-envelope"></i> Email</h3>
+          <p><a href="mailto:rafaeldgrande@gmail.com">rafaeldgrande@gmail.com</a></p>
+          <p style="font-size: 0.9em; color: #666; margin-top: 1em;">Personal email</p>
+        </div>
 
-    <p>
-    <strong>Social Media:</strong><br>
-    <a href="https://www.linkedin.com/in/rafaeldelgrande/" target="_blank">
-        <i class="fab fa-linkedin"></i> LinkedIn
-    </a><br>
-    <a href="https://x.com/rafaeldelgrande" target="_blank">
-        <i class="fab fa-twitter"></i> Twitter
-    </a>
-    </p>
+        <div class="contact-card">
+          <h3><i class="fas fa-building"></i> University</h3>
+          <p><a href="mailto:rdelgrande@ucmerced.edu">rdelgrande@ucmerced.edu</a></p>
+          <p style="font-size: 0.9em; color: #666; margin-top: 1em;">UC Merced email</p>
+        </div>
 
+        <div class="contact-card">
+          <h3><i class="fas fa-link"></i> Social Media</h3>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/rafaeldelgrande/" target="_blank" title="LinkedIn">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://x.com/rafaeldelgrande" target="_blank" title="Twitter/X">
+              <i class="fab fa-twitter"></i> Twitter
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
 
   <footer>
-    &copy; 2025 Rafael R. Del Grande
+    &copy; 2026 Rafael R. Del Grande
   </footer>
 
   <script>

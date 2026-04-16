@@ -5,81 +5,181 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Home | Rafael R. Del Grande</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: 'Helvetica Neue', sans-serif;
-      background: #fcfbf7;
-      color: #333;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+      background: #fafaf8;
+      color: #2c2c2c;
+      line-height: 1.6;
     }
 
     header {
-      background: #fcfbf7;
-      padding: 1em 2em;
-      border-bottom: 1px solid #ddd;
+      background: white;
+      padding: 2em;
+      border-bottom: 1px solid #e8e8e6;
       position: sticky;
       top: 0;
       z-index: 100;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
     }
 
     .title {
-      font-size: 2.5em;
+      font-size: 2.2em;
       margin: 0;
+      font-weight: 700;
+      color: #1a1a1a;
+      letter-spacing: -0.5px;
     }
 
     .subtitle {
       font-style: italic;
-      font-size: 1.2em;
-      margin-top: 0.25em;
-      color: #555;
+      font-size: 1.1em;
+      margin-top: 0.3em;
+      color: #666;
+      font-weight: 400;
     }
 
     nav {
-      margin-top: 1em;
+      margin-top: 1.2em;
+      display: flex;
+      gap: 2em;
     }
 
     nav a {
       text-decoration: none;
       color: #800000;
-      font-weight: bold;
-      margin-right: 1.5em;
-      padding-bottom: 4px;
+      font-weight: 600;
+      font-size: 0.95em;
+      position: relative;
+      transition: color 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    nav a.active,
-    nav a:hover {
-      border-bottom: 4px solid #800000;
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: #800000;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
     }
 
     section {
-      padding: 2em 2em;  /* Or even 1em 2em for tighter spacing */
-      max-width: 800px;
+      padding: 3em 2em;
+      max-width: 900px;
       margin: auto;
+    }
+
+    section h2 {
+      font-size: 1.8em;
+      margin-top: 0;
+      margin-bottom: 1.5em;
+      color: #1a1a1a;
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 0.5em;
+      border-bottom: 3px solid #f0f0f0;
+    }
+
+    section h2::before {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: #800000;
+    }
+
+    p {
+      margin: 1.5em 0;
+      font-size: 1em;
+      line-height: 1.8;
+    }
+
+    ul {
+      margin: 1.5em 0;
+      padding-left: 2em;
+      list-style-type: disc;
+    }
+
+    li {
+      margin: 1.2em 0;
+      line-height: 1.8;
+      color: #2c2c2c;
+    }
+
+    a {
+      color: #0066cc;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: #800000;
     }
 
     footer {
       text-align: center;
-      padding: 2em;
-      font-size: 0.8em;
-      color: #888;
+      padding: 3em 2em;
+      font-size: 0.85em;
+      color: #999;
+      border-top: 1px solid #e8e8e6;
+      margin-top: 2em;
     }
 
     .header-container {
-    display: flex;
-    align-items: center;
-    gap: 1.5em;
+      display: flex;
+      align-items: center;
+      gap: 2em;
     }
 
     .profile-pic {
-    width: 130px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 140px;
+      height: 140px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      object-fit: cover;
+      flex-shrink: 0;
     }
 
     .title-container {
-    flex: 1;
+      flex: 1;
     }
 
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5em;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 0.8em;
+        justify-content: center;
+      }
+
+      .title {
+        font-size: 1.8em;
+      }
+
+      section {
+        padding: 2em 1.5em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -111,7 +211,7 @@
     </section>
 
   <footer>
-    &copy; 2025 Rafael R. Del Grande
+    &copy; 2026 Rafael R. Del Grande
   </footer>
 
   <script>
