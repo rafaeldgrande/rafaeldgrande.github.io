@@ -6,6 +6,34 @@
   <title>Publications | Rafael R. Del Grande</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚛️</text></svg>">
   <style>
+    :root {
+      --bg: #fafaf8;
+      --header-bg: #ffffff;
+      --border-color: #e8e8e6;
+      --text: #2c2c2c;
+      --title-color: #1a1a1a;
+      --subtitle-color: #666;
+      --accent: #800000;
+      --link-color: #0066cc;
+      --footer-color: #999;
+      --section-border: #f0f0f0;
+      --shadow: rgba(0,0,0,0.04);
+    }
+
+    html.dark {
+      --bg: #111318;
+      --header-bg: #1a1b26;
+      --border-color: #2e3044;
+      --text: #d4d8e8;
+      --title-color: #f0f0f5;
+      --subtitle-color: #8b90a8;
+      --accent: #cc3333;
+      --link-color: #4d99ff;
+      --footer-color: #555;
+      --section-border: #2e3044;
+      --shadow: rgba(0,0,0,0.2);
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -13,26 +41,28 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
-      background: #fafaf8;
-      color: #2c2c2c;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
     header {
-      background: white;
+      background: var(--header-bg);
       padding: 2em;
-      border-bottom: 1px solid #e8e8e6;
+      border-bottom: 1px solid var(--border-color);
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 2px 4px var(--shadow);
+      transition: background 0.3s ease, border-color 0.3s ease;
     }
 
     .title {
       font-size: 2.2em;
       margin: 0;
       font-weight: 700;
-      color: #1a1a1a;
+      color: var(--title-color);
       letter-spacing: -0.5px;
     }
 
@@ -40,7 +70,7 @@
       font-style: italic;
       font-size: 1.1em;
       margin-top: 0.3em;
-      color: #666;
+      color: var(--subtitle-color);
       font-weight: 400;
     }
 
@@ -52,7 +82,7 @@
 
     nav a {
       text-decoration: none;
-      color: #800000;
+      color: var(--accent);
       font-weight: 600;
       font-size: 0.95em;
       position: relative;
@@ -68,7 +98,7 @@
       left: 0;
       width: 0;
       height: 3px;
-      background: #800000;
+      background: var(--accent);
       transition: width 0.3s ease;
     }
 
@@ -87,11 +117,11 @@
       font-size: 1.8em;
       margin-top: 2.5em;
       margin-bottom: 1.5em;
-      color: #1a1a1a;
+      color: var(--title-color);
       font-weight: 700;
       position: relative;
       padding-bottom: 0.5em;
-      border-bottom: 3px solid #f0f0f0;
+      border-bottom: 3px solid var(--section-border);
     }
 
     section h2:first-of-type {
@@ -105,7 +135,7 @@
       left: 0;
       width: 60px;
       height: 3px;
-      background: #800000;
+      background: var(--accent);
     }
 
     ol, ul {
@@ -117,30 +147,30 @@
     li {
       margin: 1.8em 0;
       line-height: 1.8;
-      color: #2c2c2c;
+      color: var(--text);
     }
 
     li strong {
-      color: #1a1a1a;
+      color: var(--title-color);
       font-weight: 600;
     }
 
     a {
-      color: #0066cc;
+      color: var(--link-color);
       text-decoration: none;
       transition: color 0.2s ease;
     }
 
     a:hover {
-      color: #800000;
+      color: var(--accent);
     }
 
     footer {
       text-align: center;
       padding: 3em 2em;
       font-size: 0.85em;
-      color: #999;
-      border-top: 1px solid #e8e8e6;
+      color: var(--footer-color);
+      border-top: 1px solid var(--border-color);
       margin-top: 2em;
     }
 
@@ -163,6 +193,28 @@
       flex: 1;
     }
 
+    .theme-toggle {
+      position: absolute;
+      top: 1.2em;
+      right: 1.5em;
+      background: none;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.4em 0.9em;
+      font-size: 0.75em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      line-height: 1.6;
+    }
+
+    .theme-toggle:hover {
+      background: var(--border-color);
+    }
+
     @media (max-width: 768px) {
       .header-container {
         flex-direction: column;
@@ -183,12 +235,19 @@
       section {
         padding: 2em 1.5em;
       }
+
+      .theme-toggle {
+        top: 0.8em;
+        right: 1em;
+      }
     }
   </style>
+  <script>if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');</script>
 </head>
 <body>
 
 <header>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">Dark Mode Off</button>
   <div class="header-container">
     <img src="pictures/profile.png" alt="Profile photo" class="profile-pic" />
     <div class="title-container">
@@ -256,7 +315,7 @@
   <h2>Pre prints</h2>
 <ol reversed>
   <li>
-    <strong>Revisiting excited state forces from many-body Green’s function formalism: approximations and benchmark.</strong>
+    <strong>Revisiting excited state forces from many-body Green's function formalism: approximations and benchmark.</strong>
     R. R. Del Grande, D. A. Strubbe
     <a href="https://doi.org/10.48550/arXiv.2502.05144" target="_blank">arxiv</a>
   </li>
@@ -280,7 +339,7 @@
     <a href="https://doi.org/10.1002/admt.202502565" target="_blank">DOI</a>
     <a href="papers/2026-1d_perovskite.pdf" target="_blank">[PDF]</a>
   </li>
-  
+
   <li>
     <strong>How to choose efficiently the size of the Bethe-Salpeter Equation Hamiltonian for accurate exciton calculations on supecells.</strong>
     R. R. Del Grande, D. A. Strubbe. <em> Physical Review B</em>, <strong>112</strong>, 165118 (2025).
@@ -298,28 +357,28 @@
     <strong>Home experiments: a hands-on adaptation of the Experimental Physics II course at UFRJ for remote teaching.</strong>
     A. R. Hernández, A. M. Gomes, E. H.C.P. Sinnecker, R. R. Del Grande, R. B. Capaz, S. C. Cardoso.
     <em>Rev. Bras. Ensino Fís.</em> <strong>43</strong> (2021).
-    <a href="https://doi.org/10.1590/1806-9126-RBEF-2021-0248" target="_blank">DOI</a> (in Portuguese) 
+    <a href="https://doi.org/10.1590/1806-9126-RBEF-2021-0248" target="_blank">DOI</a> (in Portuguese)
     <a href="papers/2021-ensfis.pdf" target="_blank">[PDF]</a>
   </li>
   <li>
     <strong>Flat bands and gaps in twisted double bilayer graphene.</strong>
     F. J. Culchac, R. R. Del Grande, R. B. Capaz, L. Chico, E. S. Morell.
     <em>Nanoscale</em> <strong>12</strong>, 5014–5020 (2020).
-    <a href="https://doi.org/10.1039/C9NR10830K" target="_blank">DOI</a> 
+    <a href="https://doi.org/10.1039/C9NR10830K" target="_blank">DOI</a>
     <a href="papers/2020-nanoscale.pdf" target="_blank">[PDF]</a>
   </li>
   <li>
     <strong>Energy barriers for collapsing large-diameter carbon nanotubes.</strong>
     R. R. Del Grande, A. F. Fonseca, R. B. Capaz.
     <em>Carbon</em> <strong>159</strong>, 161–165 (2020).
-    <a href="https://doi.org/10.1016/j.carbon.2019.12.030" target="_blank">DOI</a> 
+    <a href="https://doi.org/10.1016/j.carbon.2019.12.030" target="_blank">DOI</a>
     <a href="papers/2020-carbon.pdf" target="_blank">[PDF]</a>
   </li>
   <li>
     <strong>Layer breathing and shear modes in multilayer graphene: a DFT-vdW study.</strong>
     R. R. Del Grande, M. G. Menezes, R. B. Capaz.
     <em>J. Phys.: Condens. Matter</em> <strong>31</strong>, 295301 (2019).
-    <a href="https://doi.org/10.1088/1361-648X/ab1995" target="_blank">DOI</a> 
+    <a href="https://doi.org/10.1088/1361-648X/ab1995" target="_blank">DOI</a>
     <a href="papers/2019-JPCM.pdf" target="_blank">[PDF]</a>
   </li>
   <li>
@@ -356,13 +415,20 @@
 </section>
 
 
-
   <footer>
     &copy; 2026 Rafael R. Del Grande
   </footer>
 
   <script>
-    // Highlight current page in nav
+    const toggle = document.getElementById('themeToggle');
+    toggle.textContent = document.documentElement.classList.contains('dark') ? 'Dark Mode On' : 'Dark Mode Off';
+    toggle.addEventListener('click', function() {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      this.textContent = isDark ? 'Dark Mode On' : 'Dark Mode Off';
+    });
+
     const path = window.location.pathname.split("/").pop();
     document.querySelectorAll(".nav-link").forEach(link => {
       if (link.getAttribute("href") === path || (path === "" && link.getAttribute("href") === "index.html")) {
