@@ -55,7 +55,7 @@
       top: 0;
       z-index: 100;
       box-shadow: 0 2px 4px var(--shadow);
-      transition: background 0.3s ease, border-color 0.3s ease;
+      transition: background 0.3s ease, border-color 0.3s ease, padding 0.3s ease;
     }
 
     .title {
@@ -64,6 +64,7 @@
       font-weight: 700;
       color: var(--title-color);
       letter-spacing: -0.5px;
+      transition: font-size 0.3s ease;
     }
 
     .subtitle {
@@ -72,12 +73,16 @@
       margin-top: 0.3em;
       color: var(--subtitle-color);
       font-weight: 400;
+      overflow: hidden;
+      max-height: 3em;
+      transition: opacity 0.3s ease, max-height 0.3s ease, margin-top 0.3s ease;
     }
 
     nav {
       margin-top: 1.2em;
       display: flex;
       gap: 2em;
+      transition: margin-top 0.3s ease;
     }
 
     nav a {
@@ -187,6 +192,8 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
       object-fit: cover;
       flex-shrink: 0;
+      overflow: hidden;
+      transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
     }
 
     .title-container {
@@ -213,6 +220,31 @@
 
     .theme-toggle:hover {
       background: var(--border-color);
+    }
+
+    header.scrolled {
+      padding: 0.7em 2em;
+    }
+
+    header.scrolled .profile-pic {
+      width: 0;
+      height: 0;
+      opacity: 0;
+      margin: 0;
+    }
+
+    header.scrolled .subtitle {
+      opacity: 0;
+      max-height: 0;
+      margin-top: 0;
+    }
+
+    header.scrolled .title {
+      font-size: 1.3em;
+    }
+
+    header.scrolled nav {
+      margin-top: 0.3em;
     }
 
     @media (max-width: 768px) {
@@ -336,6 +368,10 @@
       const isDark = document.documentElement.classList.contains('dark');
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
       this.textContent = isDark ? 'Dark Mode On' : 'Dark Mode Off';
+    });
+
+    window.addEventListener('scroll', function() {
+      document.querySelector('header').classList.toggle('scrolled', window.scrollY > 60);
     });
 
     const path = window.location.pathname.split("/").pop();
