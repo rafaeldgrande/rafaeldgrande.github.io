@@ -111,14 +111,60 @@
 
     ul {
       margin: 1.5em 0;
-      padding-left: 2em;
-      list-style-type: disc;
+      padding-left: 0;
+      list-style-type: none;
     }
 
     li {
       margin: 1.2em 0;
       line-height: 1.8;
       color: #2c2c2c;
+    }
+
+    li details {
+      border: 1px solid #e0e0dc;
+      border-radius: 8px;
+      padding: 1em 1.2em;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: box-shadow 0.2s ease;
+    }
+
+    li details:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    li details summary {
+      font-weight: 600;
+      font-size: 1em;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #1a1a1a;
+    }
+
+    li details summary::-webkit-details-marker { display: none; }
+
+    li details summary::after {
+      content: '+';
+      font-size: 1.3em;
+      font-weight: 400;
+      color: #800000;
+      margin-left: 1em;
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+
+    li details[open] summary::after {
+      content: '−';
+    }
+
+    li details .details-body {
+      margin-top: 1em;
+      border-top: 1px solid #f0f0ee;
+      padding-top: 1em;
     }
 
     a {
@@ -202,11 +248,84 @@
 
 
     <section>
-    <h2>Research Projects</h2>
+    <h2>Portfolio</h2>
     <ul>
-        <li>Excited-state forces from GW-BSE + electron-phonon coupling</li>
-        <li>Ab initio studies of 2D materials and moiré systems</li>
-        <li>Machine learning for excited-state properties</li>
+
+        <li>
+          <details>
+            <summary>Graph Neura Networks to predict GW energy corrections</summary>
+            <div class="details-body">
+              <img src="pictures/GNN_diagram.png" alt="Excited state forces scheme" style="max-width: 100%; margin: 1em 0; display: block;" />
+              <p>
+                GW method is the workhorse to calculate the bandgap of materials, but its computational cost is higher 
+                than typical DFT calculations, limiting its use for systems with small number of atoms per unit cell. 
+                In this project I developed a Graph Neural Network (GNN) to predict GW corrections to DFT calculations 
+                and applied it to MoS<sub>2</sub> with a sulfur vacancy, obtainning results with precision of full GW 
+                calculations but at a fraction of the computational cost.
+              </p>
+              <p>
+                You can find the code here: <a href="hhttps://github.com/rafaeldgrande/GW_predict_with_GNN">Github repository</a>
+              </p>
+
+            </div>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary>Excited-state forces from GW-BSE + electron-phonon coupling</summary>
+            <div class="details-body">
+              <img src="pictures/Scheme_STE.png" alt="Excited state forces scheme" style="max-width: 100%; margin: 1em 0; display: block;" />
+              <p>
+                When a material absorbs light it goes from a ground potential energy surface to an excited potential energy surface.
+                After the this excitation it experiences an excited state forces that leads to several phenomena, like exciton self-trapping, coherent phonon generation, etc.
+                Using the Hellman-Feynman theorem the excited state forces related to exciton can be calculated by combining excitonic effects from GW-BSE calculations and electron-phonon coefficients from DFPT calculations.
+              </p>
+              <p>
+                In this project I implemented a Python code to calculate excited state forces in a practical workflow combining results from BerkleyGW and Quantum Espresso. You can find it here: <a href="https://github.com/rafaeldgrande/excited_state_forces">Github repository</a>
+              </p>
+              <p>
+                Details on benchmark, mathematical derivation, etc can be found here: <a href="https://doi.org/10.48550/arXiv.2502.05144">ESF paper</a>
+              </p>
+            </div>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary>Ab initio calculation of first and second order resonant Raman</summary>
+            <div class="details-body">
+              <img src="pictures/resonant_raman_panel.png" alt="Resonant Raman panel" style="max-width: 100%; margin: 1em 0; display: block;" />
+              <p>
+                Raman scattering is the process by which light is inelastically scattered in a material creating and destroying phonons. When the excitation energy
+                matches the electronic transition energy of a material, the Raman scattering is called resonant Raman scattering. In this project we use ab initio exciton-phonon
+                matrix elements calculated with our excited state forces code to calculate Raman cross sections.
+                For second-order resonant Raman, I also included second-order exciton-phonon matrix elements based on the acoustic sum rule. 
+                To make better visualizations of a massive quantity of data, I also implemented interactive visualizations in HTML pages.
+              </p>
+              <p>
+                The resonant Raman code is part of the excited state forces repository. You can find it here: <a href="https://github.com/rafaeldgrande/excited_state_forces">Github repository</a>
+              </p>
+            </div>
+          </details>
+        </li>
+
+        <li>
+          <details>
+            <summary>How to choose efficiently the size of the Bethe-Salpeter Equation Hamiltonian for accurate exciton calculations on supecells</summary>
+            <div class="details-body">
+              <p>
+                In this paper I explain how to choose efficiently the size of the Bethe-Salpeter Equation (BSE) Hamiltonian for accurate 
+                exciton calculations on supecells. We analize extensively the convergence of exciton energies regarding 
+                how many bands are used to build the BSE Hamiltonian considering the tradeoff between accuracy and computational cost.
+                It was published in Physical Review B and you can find the paper here: <a href="https://doi.org/10.1103/dg13-y4kj">[DOI]</a> <a href="papers/2025-prb_BSE.pdf" target="_blank">[PDF]</a>
+                Also we have a Jupyter Notebook and Data at <a href="https://zenodo.org/records/15778718" target="_blank">Zenodo</a>
+              </p>
+            </div>
+          </details>
+        </li>
+
+
     </ul>
     </section>
 
