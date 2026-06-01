@@ -226,25 +226,93 @@
       padding: 0.7em 2em;
     }
 
-    header.scrolled .profile-pic {
-      width: 0;
-      height: 0;
-      opacity: 0;
-      margin: 0;
-    }
-
     header.scrolled .subtitle {
       opacity: 0;
       max-height: 0;
       margin-top: 0;
     }
 
-    header.scrolled .title {
-      font-size: 1.3em;
-    }
-
     header.scrolled nav {
       margin-top: 0.3em;
+    }
+
+    @media (min-width: 769px) {
+      header.scrolled .profile-pic {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        box-shadow: none;
+      }
+
+      header.scrolled .title {
+        font-size: 1.1em;
+      }
+    }
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0.4em;
+      flex-shrink: 0;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--header-bg);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5em;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-size: 1.8em;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-decoration: none;
+    }
+
+    .mobile-menu a:hover {
+      opacity: 0.75;
+    }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 1.2em;
+      right: 1.5em;
+      background: none;
+      border: none;
+      font-size: 1.8em;
+      cursor: pointer;
+      color: var(--text);
+      line-height: 1;
     }
 
     @media (max-width: 768px) {
@@ -272,6 +340,32 @@
         top: 0.8em;
         right: 1em;
       }
+
+      header.scrolled .profile-pic {
+        width: 0;
+        height: 0;
+        opacity: 0;
+        margin: 0;
+      }
+
+      header.scrolled .title {
+        font-size: 1.1em;
+      }
+
+      header.scrolled .header-container {
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        gap: 1em;
+      }
+
+      header.scrolled nav {
+        display: none;
+      }
+
+      header.scrolled .hamburger {
+        display: flex;
+      }
     }
   </style>
   <script>if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');</script>
@@ -283,7 +377,12 @@
   <div class="header-container">
     <img src="pictures/profile.png" alt="Profile photo" class="profile-pic" />
     <div class="title-container">
-      <h1 class="title">Rafael R. Del Grande</h1>
+      <div class="title-row">
+        <h1 class="title">Rafael R. Del Grande</h1>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
       <p class="subtitle">Postdoctoral Scholar at University of California, Merced</p>
       <nav>
         <a href="index.html" class="nav-link">Home</a>
@@ -294,6 +393,14 @@
     </div>
   </div>
 </header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="publications.html" class="nav-link">Publications</a>
+  <a href="research.html" class="nav-link">Portfolio</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+</div>
 
 <section>
   <a href="https://scholar.google.com/citations?hl=en&user=wAtxrSAAAAAJ&view_op=list_works" target="_blank">Google Scholar</a>
@@ -464,6 +571,11 @@
     window.addEventListener('scroll', function() {
       document.querySelector('header').classList.toggle('scrolled', window.scrollY > 60);
     });
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    document.getElementById('mobileMenuClose').addEventListener('click', () => mobileMenu.classList.remove('open'));
+    hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
 
     const path = window.location.pathname.split("/").pop();
     document.querySelectorAll(".nav-link").forEach(link => {
