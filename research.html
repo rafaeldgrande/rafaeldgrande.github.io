@@ -458,9 +458,32 @@
 
         <li>
           <details>
+            <summary>Exploring self-trapped excitons in LiF with machine learning force fields and generative AI</summary>
+            <div class="details-body">
+              <img src="pictures/Exc_forces_MLFF_genai.png" alt="Excited state forces machine learning force field and generative AI to predict self-trapped excitons" style="max-width: 100%; margin: 1em 0; display: block;" />
+              <p>
+                The computation of excited state forces depends on results of GWBSE + DFPT computations,
+                which makes several steps realistic relaxations of excited states simulations computationally
+                very demanding. Using the adiabatic approximation we trained a MACE (Multi Atomic Cluster Expansion)
+                force field with our excited state forces for LiF. With this model we study self-trapped excitons in LiF, such as Vk centers 
+                and polaronic excitons. Then we use those stable structures to train a generative AI model that predicts
+                novel self-trapped structures, which are validated by our machine learning force field.
+              </p>
+
+            </div>
+          <p style="font-size:0.85em; color:var(--subtitle-color);">
+          BerkeleyGW · Exciton-phonon · MACE · Machine Learning Interatomic Potential · 
+          </p>
+          </details>
+          
+        </li>
+
+
+        <li>
+          <details>
             <summary>Graph Neural Networks to predict GW energy corrections</summary>
             <div class="details-body">
-              <img src="pictures/GNN_diagram.png" alt="Excited state forces scheme" style="max-width: 100%; margin: 1em 0; display: block;" />
+              <img src="pictures/GNN_diagram.png" alt="Diagram of Graph Neural Network that predicts GW corrections" style="max-width: 100%; margin: 1em 0; display: block;" />
               <p>
                 GW method is the workhorse to calculate the bandgap of materials, but its computational cost is higher
                 than typical DFT calculations, limiting its use for systems with small number of atoms per unit cell.
